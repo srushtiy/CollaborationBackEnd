@@ -1,4 +1,4 @@
-package com.niit.collaboration.dao;
+/*package com.niit.collaboration.dao;
 
 import java.util.List;
 
@@ -52,3 +52,4 @@ public class BlogCommentDAOImpl implements BlogCommentDAO {
 	
 	
 }
+*/

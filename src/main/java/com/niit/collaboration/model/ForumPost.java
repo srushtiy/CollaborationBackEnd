@@ -23,9 +23,10 @@ public class ForumPost {
 	private String userid;
 	private String post_content;
 	private Timestamp time_created;
+	
 	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="forum_id",nullable=false)
 	@JsonBackReference
-	@JoinColumn(name="forumId",nullable=false)
 	private Forum forum;
 	public String getForumpostid() {
 		return forumpostid;

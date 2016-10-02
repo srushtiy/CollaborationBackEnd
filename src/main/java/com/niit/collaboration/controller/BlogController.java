@@ -37,11 +37,11 @@ public class BlogController {
 			return new ResponseEntity<List<Blog>>(HttpStatus.NO_CONTENT);
 		}
 		
-		return new ResponseEntity<List<Blog>>(HttpStatus.OK);
+		return new ResponseEntity<List<Blog>>(list, HttpStatus.OK);
 			
 	}
 	
-	@GetMapping("/blog/{id}")
+	@GetMapping("/blogs/{blog_id}")
 	public ResponseEntity<Blog> getBlog(@PathVariable("id") String id){
 		logger.debug("Calling method getBlogs with the the id" + id);
 		blog = blogDAO.getByID(id);
@@ -51,7 +51,7 @@ public class BlogController {
 		return new ResponseEntity<Blog>(blog, HttpStatus.OK);
 	}
 	
-	@PostMapping(value="/blog")
+	@PostMapping(value="/blogs")
 	public ResponseEntity<Blog> createBlog(@RequestBody Blog blog){
 		logger.debug("calling method createBlog");
 		
@@ -63,8 +63,8 @@ public class BlogController {
 		return new ResponseEntity<Blog>(blog, HttpStatus.CONFLICT);
 	}
 
-	@DeleteMapping("/blog/{id}")
-	public ResponseEntity<Blog> deleteBlog(@PathVariable String id){
+	@DeleteMapping("/blogs/{blog_id}")
+	public ResponseEntity<Blog> deleteBlog(@PathVariable("blog_id") String id){
 		logger.debug("calling method deleteBlog with the id" + id);
 		if (blogDAO.getByID(id)!=null){
 			return new ResponseEntity<Blog>(HttpStatus.NOT_FOUND);
@@ -73,8 +73,8 @@ public class BlogController {
 		return new ResponseEntity<Blog>(HttpStatus.OK);
 	}
 	
-	@PutMapping("/blog/{id}")
-	public ResponseEntity<Blog> updateBlog(@PathVariable String id,@RequestBody Blog blog){
+	@PutMapping("/blogs/{blog_id}")
+	public ResponseEntity<Blog> updateBlog(@PathVariable("blog_id") String id,@RequestBody Blog blog){
 		logger.debug("calling method updateBlog with the id" + id);
 		if (blogDAO.getByID(id)== null){
 			return new ResponseEntity<Blog>(HttpStatus.NOT_FOUND);

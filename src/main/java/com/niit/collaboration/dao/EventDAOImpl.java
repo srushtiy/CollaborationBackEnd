@@ -54,4 +54,21 @@ public class EventDAOImpl implements EventDAO{
 		return listEvent;
 	}
 
+	@Transactional
+	public boolean isEventExist(Event event) {
+		return findByTitle(event.getEvent_title())!=null;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public Event findByTitle(String eventTitle) {
+		String hql = "from Event where event_title=" + "'" + eventTitle + "'";
+		Query query =(Query) sessionFactory.getCurrentSession().createQuery(hql);
+		List<Event> listEvent = (List<Event>) query.list();
+		if (listEvent  != null && !listEvent .isEmpty()) {
+			return listEvent.get(0);
+		}
+		return null;
+	}
+
 }

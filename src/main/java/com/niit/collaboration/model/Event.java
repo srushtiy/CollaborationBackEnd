@@ -1,6 +1,6 @@
 package com.niit.collaboration.model;
 
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.UUID;
 
 import javax.persistence.Entity;
@@ -18,22 +18,15 @@ public class Event {
 	private String userid;
 	private String event_title;
 	private String event_description;
-	private Timestamp event_created;
-	private Timestamp event_time;
+	private Date event_created;
 	public String getUserid() {
 		return userid;
 	}
-	public Timestamp getEvent_created() {
+	public Date getEvent_created() {
 		return event_created;
 	}
-	public void setEvent_created(Timestamp event_created) {
+	public void setEvent_created(Date event_created) {
 		this.event_created = event_created;
-	}
-	public Timestamp getEvent_time() {
-		return event_time;
-	}
-	public void setEvent_time(Timestamp event_time) {
-		this.event_time = event_time;
 	}
 	public void setUserid(String userid) {
 		this.userid = userid;

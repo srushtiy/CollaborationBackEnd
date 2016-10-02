@@ -17,4 +17,6 @@ public interface UserInfoDAO {
 	public List<UserInfo> list();
 	
 	public UserInfo isValidUser(String id, String name);
+	
+	public UserInfo getByEmail(String email);
 }

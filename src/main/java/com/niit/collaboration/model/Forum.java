@@ -1,6 +1,7 @@
 package com.niit.collaboration.model;
 
-import java.sql.Date;
+import java.util.Date;
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -22,14 +23,13 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 public class Forum {
 	@Id
 	private String forum_id;
-	private String forumtitle;
+	private String forum_title;
 	private String forum_description;
-	private String  post_number;
 	private String userid;
-	private int posts;
 	private Date date_created;
-	private Date date_modified;
-	private String status;
+	private Timestamp time_modified;
+	private char status;
+	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "forum")
 	@JsonManagedReference
 	private Set<ForumPost> forumPosts = new HashSet<>();
@@ -41,16 +41,10 @@ public class Forum {
 		this.forumPosts = forumPosts;
 	}
 	public String getForumtitle() {
-		return forumtitle;
+		return forum_title;
 	}
 	public void setForumtitle(String title) {
-		this.forumtitle = title;
-	}
-	public String getPost_number() {
-		return post_number;
-	}
-	public void setPost_number(String post_number) {
-		this.post_number = post_number;
+		this.forum_title = title;
 	}
 	public String getUserid() {
 		return userid;
@@ -58,23 +52,17 @@ public class Forum {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-	public int getPosts() {
-		return posts;
-	}
-	public void setPosts(int posts) {
-		this.posts = posts;
-	}
 	public Date getDate_created() {
 		return date_created;
 	}
-	public void setDate_created(Date date_created) {
-		this.date_created = date_created;
+	public void setDate_created(Date date) {
+		this.date_created = date;
 	}
-	public Date getDate_modified() {
-		return date_modified;
+	public Timestamp getTime_modified() {
+		return time_modified;
 	}
-	public void setDate_modified(Date date_modified) {
-		this.date_modified = date_modified;
+	public void setTime_modified(Timestamp date_modified) {
+		this.time_modified = date_modified;
 	}
 	
 	public Forum(){
@@ -92,10 +80,10 @@ public class Forum {
 	public void setForum_description(String forum_description) {
 		this.forum_description = forum_description;
 	}
-	public String getStatus() {
+	public char getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+	public void setStatus(char status) {
 		this.status = status;
 	}
 }

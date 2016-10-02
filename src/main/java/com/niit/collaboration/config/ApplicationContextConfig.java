@@ -15,6 +15,11 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.niit.collaboration.model.Blog;
+import com.niit.collaboration.model.BlogComment;
+import com.niit.collaboration.model.Event;
+import com.niit.collaboration.model.Forum;
+import com.niit.collaboration.model.ForumPost;
+import com.niit.collaboration.model.JobOpp;
 /*import com.niit.collaboration.model.Event;
 import com.niit.collaboration.model.Forum;
 import com.niit.collaboration.model.ForumPost;
@@ -23,6 +28,7 @@ import com.niit.collaboration.model.JobOpp;
 import com.niit.collaboration.model.Role;*/
 import com.niit.collaboration.model.UserInfo;
 /*import com.niit.collaboration.model.UserRole;*/
+import com.niit.collaboration.model.UserRole;
 
 
 @Configuration
@@ -62,14 +68,13 @@ public class ApplicationContextConfig {
 		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
 		sessionBuilder.addProperties(getHibernateProperties());
 		sessionBuilder.addAnnotatedClass(Blog.class);
-		/*sessionBuilder.addAnnotatedClass(Event.class);
+		sessionBuilder.addAnnotatedClass(BlogComment.class);
+		sessionBuilder.addAnnotatedClass(Event.class);
 		sessionBuilder.addAnnotatedClass(Forum.class);
 		sessionBuilder.addAnnotatedClass(ForumPost.class);
-		sessionBuilder.addAnnotatedClass(Friend.class);
 		sessionBuilder.addAnnotatedClass(JobOpp.class);
-		sessionBuilder.addAnnotatedClass(Role.class);*/
 		sessionBuilder.addAnnotatedClass(UserInfo.class);
-		/*sessionBuilder.addAnnotatedClass(UserRole.class);*/
+		sessionBuilder.addAnnotatedClass(UserRole.class);
 		return sessionBuilder.buildSessionFactory();
 	}
 

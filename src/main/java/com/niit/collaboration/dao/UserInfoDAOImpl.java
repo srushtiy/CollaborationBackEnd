@@ -13,8 +13,10 @@ import com.niit.collaboration.model.UserInfo;
 @Repository("userInfoDAO")
 public class UserInfoDAOImpl implements UserInfoDAO {
 
-/*	private static final Logger logger = (Logger) LoggerFactory.getLogger(UserInfoDAOImpl.class);
-*/
+	/*
+	 * private static final Logger logger = (Logger)
+	 * LoggerFactory.getLogger(UserInfoDAOImpl.class);
+	 */
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -51,10 +53,10 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 	@SuppressWarnings("unchecked")
 	@Transactional
 	public UserInfo getUserInfo(String id) {
-		String hql ="from UserInfo where userid = " + "'" + id + "'";
+		String hql = "from UserInfo where userid = " + "'" + id + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List<UserInfo> list = (List<UserInfo>) query.list();
-		if (list != null && !list.isEmpty()){
+		if (list != null && !list.isEmpty()) {
 			return list.get(0);
 		}
 		return null;
@@ -63,10 +65,10 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 	@SuppressWarnings("unchecked")
 	@Transactional
 	public UserInfo get(String id, String password) {
-		String hql = "from UserInfo where userid ="+ "'" + id + "'" + "and password =" + "'" + password + "'";
+		String hql = "from UserInfo where userid =" + "'" + id + "'" + "and password =" + "'" + password + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List<UserInfo> list = (List<UserInfo>) query.list();
-		if (list != null && !list.isEmpty()){
+		if (list != null && !list.isEmpty()) {
 			return list.get(0);
 		}
 		return null;
@@ -86,4 +88,16 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public UserInfo getByEmail(String email) {
+		String hql = "from UserInfo where email = " + "'" + email + "'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		List<UserInfo> list = (List<UserInfo>) query.list();
+		if (list != null && !list.isEmpty()) {
+			return list.get(0);
+		}
+		return null;
+
+	}
 }

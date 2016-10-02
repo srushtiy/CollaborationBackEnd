@@ -30,6 +30,7 @@ public class Blog implements Serializable{
 	private Date date_modified;
 	private char status;
 	
+	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "blog")
 	@JsonManagedReference
 	private Set<BlogComment> blogcomments = new HashSet<>();

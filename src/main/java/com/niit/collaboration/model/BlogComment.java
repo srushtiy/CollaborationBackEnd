@@ -25,7 +25,7 @@ public class BlogComment implements Serializable {
 	@Id
 	private String blogcomment_id;
 	private String userid;
-	private String comment;
+	private String description;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy HH:mm:ss", timezone="IST")
 	private Timestamp time_commented;
 	
@@ -45,12 +45,12 @@ public class BlogComment implements Serializable {
 		this.userid = userid;
 	}
 
-	public String getComment() {
-		return comment;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setDescription(String comment) {
+		this.description = comment;
 	}
 
 	public Timestamp getTime_commented() {

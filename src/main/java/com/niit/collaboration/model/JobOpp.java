@@ -1,6 +1,7 @@
 package com.niit.collaboration.model;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.UUID;
 
 import javax.persistence.Entity;
@@ -18,7 +19,7 @@ public class JobOpp {
 	private String jobOppId;
 	private String job_title;
 	private String job_description;
-	private Timestamp post_time;
+	private Date date_posted;
 	private Timestamp modified_time;
 	public String getJobOppId() {
 		return jobOppId;
@@ -38,12 +39,7 @@ public class JobOpp {
 	public void setJob_description(String job_description) {
 		this.job_description = job_description;
 	}
-	public Timestamp getPost_time() {
-		return post_time;
-	}
-	public void setPost_time(Timestamp post_time) {
-		this.post_time = post_time;
-	}
+
 	public Timestamp getModified_time() {
 		return modified_time;
 	}
@@ -53,5 +49,11 @@ public class JobOpp {
 	
 	public JobOpp(){
 		this.jobOppId = 'J' + UUID.randomUUID().toString().substring(24).toUpperCase();
+	}
+	public Date getDate_posted() {
+		return date_posted;
+	}
+	public void setDate_posted(Date date_posted) {
+		this.date_posted = date_posted;
 	}
 }

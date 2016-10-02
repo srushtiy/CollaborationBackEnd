@@ -14,4 +14,8 @@ public interface EventDAO {
 	
 	List <Event> list();
 	
+	boolean isEventExist(Event event);
+	
+	public Event findByTitle(String eventTitle);
+	
 }
